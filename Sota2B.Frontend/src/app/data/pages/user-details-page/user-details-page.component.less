@@ -22,6 +22,11 @@
     transition: transform 0.2s; /* Плавный переход при наведении */
 }
 
+.section .section-body {
+    max-height: 30vh;
+    overflow-y: auto;
+}
+
 .section:hover {
     transform: scale(1.02); /* Увеличение секции при наведении */
 }
@@ -30,15 +35,8 @@
     display: flex;
     flex-wrap: wrap; 
     width: 100%;
-}
-
-.card-container > div {
-    margin: 10px;
-    flex: 1 0 30%; /* Устанавливаем базовую ширину карточек */
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Тень для карточек */
-    border-radius: 5px; /* Закругленные углы для карточек */
-    overflow: hidden; /* Скрываем переполнение */
-    transition: transform 0.2s; /* Плавный переход при наведении */
+    max-height: 40vh;
+    overflow-y: auto;
 }
 
 .card-container > div:hover {
@@ -77,4 +75,34 @@ h2 {
     font-size: 1.5em; /* Размер шрифта заголовка */
     border-bottom: 2px solid #007bff; /* Нижняя граница заголовка */
     padding-bottom: 10px; /* Отступ снизу заголовка */
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .section {
+        flex: 1 1 100%; /* На маленьких экранах секции занимают всю ширину */
+        margin: 5px 0; /* Уменьшаем отступы между секциями */
+    }
+
+    .data-table th, .data-table td {
+        padding: 8px; /* Уменьшаем отступы в таблице на маленьких экранах */
+    }
+
+    h2 {
+        font-size: 1.2em; /* Уменьшаем размер заголовка на маленьких экранах */
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 10px; /* Уменьшаем внутренние отступы в секциях */
+    }
+
+    .data-table th, .data-table td {
+        padding: 6px; /* Уменьшаем отступы в таблице на очень маленьких экранах */
+    }
+
+    h2 {
+        font-size: 1em; /* Уменьшаем размер заголовка на очень маленьких экранах */
+    }
 }

@@ -1,3 +1,9 @@
-<div *ngFor="let user of users">
-    <app-user-card [userInfo]="user"></app-user-card>
-</div>
+<div class="container">
+    <button appearance="primary" tuiButton type="button">
+        Создать нового пользователя
+    </button>
+    <div class="user-list">
+        <div *ngFor="let user of users" class="user-card-container">
+            <app-user-card [userInfo]="user"></app-user-card>
+        </div>
+    </div>

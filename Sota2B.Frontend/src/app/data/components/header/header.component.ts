@@ -11,32 +11,4 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.less'
 })
 export class HeaderComponent {
-  event: IEvent = {
-    id: 0,
-    name: '',
-    description: '',
-    reward: 0,
-    startDate: new Date(),
-    endDate: new Date()
-  };
-  constructor (private eventService: EventService) {
-
-  }
-  private readonly dialog = tuiDialog(EventDialogComponent, {
-    dismissible: true,
-    label: 'Событие',
-});
-
-protected showDialog(): void {
-    this.dialog({ ...this.event}).subscribe({
-        next: (data) => {
-          this.eventService.createEvent(data).subscribe({ next: (data) => {
-          console.log(1)
-          }})
-        },
-        complete: () => {
-            console.info('Dialog closed');
-        },
-    });
-}
 }

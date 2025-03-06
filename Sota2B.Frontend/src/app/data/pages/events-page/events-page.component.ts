@@ -6,37 +6,69 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user-service.service';
 import { EventCardComponent } from "../../components/cards/event-card/event-card.component";
+import { TuiButton, tuiDialog } from '@taiga-ui/core';
+import { EventDialogComponent } from '../../components/dialogs/event-dialog/event-dialog.component';
 
 @Component({
   selector: 'app-events-page',
-  imports: [CommonModule, EventCardComponent],
+  imports: [CommonModule, EventCardComponent, TuiButton],
   templateUrl: './events-page.component.html',
   styleUrl: './events-page.component.less'
 })
 export class EventsPageComponent {
 
-    events: IEvent[] = [];
-    idUser!: number;
-    private sub: Subscription | null = null;
-    constructor(
-      private eventService: EventService,
-      private route: ActivatedRoute,
-    ){
-      
-    }
+  event: IEvent = {
+    id: 0,
+    name: '',
+    description: '',
+    reward: 0,
+    startDate: new Date(),
+    endDate: new Date()
+  };
 
-    ngOnInit(): void {
-      this.route.params.subscribe((params) => {
+  private readonly dialog = tuiDialog(EventDialogComponent, {
+    dismissible: true,
+    label: 'Событие',
+  });
+
+  events: IEvent[] = [];
+  idUser!: number;
+  private sub: Subscription | null = null;
+  constructor(
+    private eventService: EventService,
+    private route: ActivatedRoute,
+  ) {
+
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
       this.idUser = params['idUser'];
-      })
-      this.sub = this.eventService.getEvents().subscribe({
-        next: (value) => {
-          this.events = value;
-        },
-      })
-    }
+    })
+    this.sub = this.eventService.getEvents().subscribe({
+      next: (value) => {
+        this.events = value;
+      },
+    })
+  }
 
-    ngOnDestroy(): void {
-      this.sub?.unsubscribe();
-    }
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
+
+  protected showDialog(): void {
+    this.dialog({ ...this.event }).subscribe({
+      next: (data) => {
+        this.events.unshift(data)
+        // this.eventService.createEvent(data).subscribe({
+        //   next: (data) => {
+        //     console.log(1)
+        //   }
+        // })
+      },
+      complete: () => {
+        console.info('Dialog closed');
+      },
+    });
+  }
 }

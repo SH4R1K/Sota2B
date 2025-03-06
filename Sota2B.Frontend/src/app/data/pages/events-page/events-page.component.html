@@ -1,3 +1,10 @@
-<div *ngFor="let event of events">
-    <app-event-card [eventInfo]="event"></app-event-card>
+<div class="container">
+    <button appearance="primary" tuiButton type="button" (click)="showDialog()">
+        Создать новое событие
+    </button>
+    <div class="event-list">
+        <div *ngFor="let event of events">
+            <app-event-card [eventInfo]="event"></app-event-card>
+        </div>
+    </div>
 </div>

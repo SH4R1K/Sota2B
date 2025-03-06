@@ -8,24 +8,22 @@ import { CommonModule } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { UserCardComponent } from '../../components/cards/user-card/user-card.component';
 import { ActivatedRoute } from '@angular/router';
-import { TuiButton } from '@taiga-ui/core';
 
 @Injectable({
   providedIn: 'root',
 })
 
 @Component({
-  selector: 'app-users-page',
+  selector: 'app-users-rating-page',
   imports: [
     CommonModule,
-    UserCardComponent,
-    TuiButton
+    UserCardComponent
 
 ],
-  templateUrl: './users-page.component.html',
-  styleUrl: './users-page.component.less'
+  templateUrl: './users-rating-page.component.html',
+  styleUrl: './users-rating-page.component.less'
 })
-export class UsersPageComponent {
+export class UsersRatingPageComponent {
     users: User[] = [];
     private sub: Subscription | null = null;
     constructor(private userService: UserService){
@@ -33,7 +31,7 @@ export class UsersPageComponent {
     }
 
     ngOnInit(): void {
-      this.sub = this.userService.getUsers().subscribe({
+      this.sub = this.userService.getUsersRating().subscribe({
         next: (value) => {
           this.users = value;
         },

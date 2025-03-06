@@ -1,0 +1,14 @@
+<div class="container">
+    <button
+        appearance="primary"
+        tuiButton
+        type="button"
+    >
+        Создать новый продукт
+    </button>
+    <div class="product-list">
+        <div *ngFor="let product of products" class="user-card-container">
+            <app-product-card [productInfo]="product"></app-product-card>
+        </div>
+    </div>
+</div>

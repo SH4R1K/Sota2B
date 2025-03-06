@@ -5,6 +5,8 @@ import { PurchasesPageComponent } from './data/pages/purchases-page/purchases-pa
 import { AchievementPageComponent } from './data/pages/achievement-page/achievement-page.component';
 import { UsersPageComponent } from './data/pages/users-page/users-page.component';
 import { UserDetailsPageComponent } from './data/pages/user-details-page/user-details-page.component';
+import { UsersRatingPageComponent } from './data/pages/users-rating-page/users-rating-page.component';
+import { ProductsPageComponent } from './data/pages/products-page/products-page.component';
 
 export const routes: Routes = [
     {
@@ -28,13 +30,23 @@ export const routes: Routes = [
       title: 'achievements page',
     },
     {
+      path: 'products',
+      component: ProductsPageComponent,
+      title: 'product page',
+    },
+    {
       path: 'users',
       component: UsersPageComponent,
       title: 'achievements page',
     },
     {
+      path: 'rating',
+      component: UsersRatingPageComponent,
+      title: 'rating page',
+    },
+    {
       path: 'users/:idUser',
       component: UserDetailsPageComponent,
-      title: 'achievements page',
+      title: 'details page',
     },
 ];

@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IConverter<User, UserDto>, UserToDtoConverter>();
 builder.Services.AddScoped<IConverter<User, UserDetailsDto>, UserToDetailsDtoConverter>();
+builder.Services.AddScoped<IConverter<User, UserRankedDto>, UserToRankedDtoConverter>();
 builder.Services.AddScoped<IConverter<Purchase, PurchaseDto>, PurchaseToDtoConverter>();
 builder.Services.AddScoped<IConverter<Achievement, AchievementDto>, AchievementToDtoConverter>();
 // Add services to the container.

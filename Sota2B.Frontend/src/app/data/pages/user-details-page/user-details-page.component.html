@@ -1,6 +1,6 @@
 <h1>{{user.name}}</h1>
 <div class="container">
-    <div class="section full-width" id="achievementSection">
+    <div class="section" id="achievementSection">
         <h2>Достижения</h2>
         <div class="card-container">
             <div *ngFor="let achievement of user.achievements">
@@ -11,30 +11,33 @@
     <div class="two-column-container">
         <div class="section" id="eventSection">
             <h2>События</h2>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Название события</th>
-                        <th>Дата начала</th>
-                        <th>Дата окончания</th>
-                        <th>Описание</th>
-                        <th>Награда</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let event of user.events">
-                        <td>{{ event.name }}</td>
-                        <td>{{ event.startDate| date }}</td>
-                        <td>{{ event.endDate| date }}</td>
-                        <td>{{ event.description }}</td>
-                        <td>{{ event.reward }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="section-body">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Название события</th>
+                            <th>Дата начала</th>
+                            <th>Дата окончания</th>
+                            <th>Описание</th>
+                            <th>Награда</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let event of user.events">
+                            <td>{{ event.name }}</td>
+                            <td>{{ event.startDate| date }}</td>
+                            <td>{{ event.endDate| date }}</td>
+                            <td>{{ event.description }}</td>
+                            <td>{{ event.reward }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="section" id="purchaseSection">
             <h2>Покупки</h2>
+            <div class="section-body">
             <table class="data-table">
                 <thead>
                     <tr>
@@ -51,6 +54,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </div>

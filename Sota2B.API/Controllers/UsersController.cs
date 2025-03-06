@@ -19,16 +19,18 @@ namespace Sota2B.API.Controllers
         private readonly Sota2BContext _context;
         private readonly IConverter<User, UserDto> _userConverterDto;
         private readonly IConverter<User, UserDetailsDto> _userConverterDetailsDto;
+        private readonly IConverter<User, UserRankedDto> _userConverterRankedDto;
         private readonly IConverter<Purchase, PurchaseDto> _purchaseConverterDto;
         private readonly IConverter<Achievement, AchievementDto> _achievementConverterDto;
 
-        public UsersController(Sota2BContext context, IConverter<User, UserDto> userConverterDto, IConverter<Purchase, PurchaseDto> purchaseConverterDto, IConverter<Achievement, AchievementDto> achievementConverterDto, IConverter<User, UserDetailsDto> userConverterDetailsDto)
+        public UsersController(Sota2BContext context, IConverter<User, UserDto> userConverterDto, IConverter<Purchase, PurchaseDto> purchaseConverterDto, IConverter<Achievement, AchievementDto> achievementConverterDto, IConverter<User, UserDetailsDto> userConverterDetailsDto, IConverter<User, UserRankedDto> userConverterRankedDto)
         {
             _context = context;
             _userConverterDto = userConverterDto;
             _purchaseConverterDto = purchaseConverterDto;
             _achievementConverterDto = achievementConverterDto;
             _userConverterDetailsDto = userConverterDetailsDto;
+            _userConverterRankedDto = userConverterRankedDto;
         }
 
         // GET: api/Users
@@ -40,6 +42,17 @@ namespace Sota2B.API.Controllers
                     .ThenInclude(u => u.Event)
                 .Include(u => u.Purchases)
                 .Select(_userConverterDto.Convert)
+                .ToList();
+        }
+
+        [HttpGet("rating")]
+        public async Task<ActionResult<IEnumerable<UserRankedDto>>> GetUsersRating()
+        {
+            return _context.Users
+                .Include(u => u.UserWasOnEvent)
+                    .ThenInclude(u => u.Event)
+                .Select(_userConverterRankedDto.Convert)
+                .OrderByDescending(u => u.Points)
                 .ToList();
         }
 

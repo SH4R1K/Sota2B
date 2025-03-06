@@ -3,11 +3,11 @@ import { TuiPlatform } from '@taiga-ui/cdk';
 import { TuiAppearance, TuiButton, TuiLink, TuiTitle } from '@taiga-ui/core';
 import { TuiAvatar, TuiBadge } from '@taiga-ui/kit';
 import { TuiCardLarge, TuiHeader } from '@taiga-ui/layout';
-import { User } from '../../../interfaces/user';
 import { RouterModule } from '@angular/router';
+import { Product } from '../../../interfaces/product';
 
 @Component({
-  selector: "app-user-card",
+  selector: "app-product-card",
   imports: [
     TuiAppearance,
     TuiButton,
@@ -17,9 +17,9 @@ import { RouterModule } from '@angular/router';
     TuiHeader,
     TuiTitle,
   ],
-  templateUrl: './user-card.component.html',
-  styleUrl: './user-card.component.less'
+  templateUrl: './product-card.component.html',
+  styleUrl: './product-card.component.less'
 })
-export class UserCardComponent {
-  @Input() userInfo!: User;
+export class ProductCardComponent {
+  @Input() productInfo!: Product;
 }

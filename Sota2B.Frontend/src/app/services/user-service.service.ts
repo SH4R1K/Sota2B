@@ -24,6 +24,11 @@ export class UserService {
       .get<User[]>(`${this.baseUrl}/Users`);
   }
 
+  getUsersRating(): Observable<User[]> {
+    return this.http
+      .get<User[]>(`${this.baseUrl}/Users/Rating`);
+  }
+
   getUser(idUser: number): Observable<UserDetails> {
     return this.http
       .get<UserDetails>(`${this.baseUrl}/Users/${idUser}`);

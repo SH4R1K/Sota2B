@@ -1,0 +1,16 @@
+<table class="rating-table">
+    <thead>
+        <tr>
+            <th>#</th> <!-- Номер -->
+            <th>Имя</th> <!-- Имя пользователя -->
+            <th>Социальный рейтинг</th> <!-- Рейтинг пользователя -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users; let i = index">
+            <td>{{ i + 1 }}</td> <!-- Номер пользователя -->
+            <td>{{ user.name }}</td> <!-- Имя пользователя -->
+            <td>{{ user.points }}</td> <!-- Рейтинг пользователя -->
+        </tr>
+    </tbody>
+</table>
