@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sota2B.API", "Sota2B.API\Sota2B.API.csproj", "{E905EC70-C2C7-49A7-96E2-FA71FC8D4A06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sota2B.DM", "Sota2B.DM\Sota2B.DM.csproj", "{20109DA1-197B-409A-8369-6CE050372F53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sota2B.DAL", "Sota2B.DAL\Sota2B.DAL.csproj", "{E9EF9F78-B361-4E9A-B7FE-A6C1A1C9C82B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E905EC70-C2C7-49A7-96E2-FA71FC8D4A06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E905EC70-C2C7-49A7-96E2-FA71FC8D4A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E905EC70-C2C7-49A7-96E2-FA71FC8D4A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E905EC70-C2C7-49A7-96E2-FA71FC8D4A06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20109DA1-197B-409A-8369-6CE050372F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20109DA1-197B-409A-8369-6CE050372F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20109DA1-197B-409A-8369-6CE050372F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20109DA1-197B-409A-8369-6CE050372F53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9EF9F78-B361-4E9A-B7FE-A6C1A1C9C82B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9EF9F78-B361-4E9A-B7FE-A6C1A1C9C82B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9EF9F78-B361-4E9A-B7FE-A6C1A1C9C82B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9EF9F78-B361-4E9A-B7FE-A6C1A1C9C82B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

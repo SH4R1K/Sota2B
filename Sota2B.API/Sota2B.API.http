@@ -1,0 +1,6 @@
+@Sota2B.API_HostAddress = http://localhost:5229
+
+GET {{Sota2B.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
