@@ -1,0 +1,80 @@
+.container {
+    margin: 20px; /* Отступы вокруг контейнера */
+    font-family: Arial, sans-serif; /* Шрифт для всего контейнера */
+}
+
+.two-column-container {
+    display: flex; /* Используем Flexbox для двух столбцов */
+    justify-content: space-between; /* Распределяем пространство между секциями */
+    flex-wrap: wrap; /* Позволяем секциям переноситься на следующую строку */
+    width: 100%;
+}
+
+.section {
+    flex: 1; /* Каждая секция занимает равное пространство */
+    min-width: 300px; /* Минимальная ширина секции */
+    margin: 10px; /* Отступы между секциями */
+    border: 1px solid #ccc; /* Граница секции */
+    border-radius: 8px; /* Закругленные углы */
+    padding: 15px; /* Внутренние отступы */
+    background-color: #ffffff; /* Цвет фона секции */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для секции */
+    transition: transform 0.2s; /* Плавный переход при наведении */
+}
+
+.section:hover {
+    transform: scale(1.02); /* Увеличение секции при наведении */
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap; 
+    width: 100%;
+}
+
+.card-container > div {
+    margin: 10px;
+    flex: 1 0 30%; /* Устанавливаем базовую ширину карточек */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Тень для карточек */
+    border-radius: 5px; /* Закругленные углы для карточек */
+    overflow: hidden; /* Скрываем переполнение */
+    transition: transform 0.2s; /* Плавный переход при наведении */
+}
+
+.card-container > div:hover {
+    transform: translateY(-5px); /* Подъем карточки при наведении */
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse; /* Убираем двойные границы */
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #ccc; /* Граница ячеек */
+    padding: 12px; /* Внутренние отступы */
+    text-align: left; /* Выравнивание текста */
+}
+
+.data-table th {
+    background-color: #007bff; /* Цвет фона заголовков */
+    color: white; /* Цвет текста заголовков */
+    font-weight: bold; /* Жирный шрифт для заголовков */
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Цвет фона для четных строк */
+}
+
+.data-table tr:hover {
+    background-color: #e9ecef; /* Цвет фона при наведении на строку */
+}
+
+h2 {
+    text-align: center; /* Выравнивание заголовка по центру */
+    color: #333; /* Цвет заголовка */
+    margin-bottom: 15px; /* Отступ снизу */
+    font-size: 1.5em; /* Размер шрифта заголовка */
+    border-bottom: 2px solid #007bff; /* Нижняя граница заголовка */
+    padding-bottom: 10px; /* Отступ снизу заголовка */
+}

@@ -1,0 +1,13 @@
+<div class="card" tuiAppearance="floating" tuiCardLarge>
+    <header tuiHeader>
+        <h2 tuiTitle>{{userInfo.name}}</h2>
+    </header>
+
+    <section>Баланс: {{userInfo.points}}</section>
+
+    <footer>
+        <button appearance="secondary" size="m" tuiButton type="button" routerLink="/users/{{userInfo.id}}">
+            Подробнее
+        </button>
+    </footer>
+</div>

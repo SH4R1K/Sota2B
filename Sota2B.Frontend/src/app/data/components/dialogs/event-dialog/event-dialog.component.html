@@ -1,0 +1,37 @@
+<label for="dataName">Event Name</label>
+<tui-input
+    id="dataName"
+    tuiAutoFocus
+    tuiTextfieldSize="m"
+    [(ngModel)]="data.name"
+    placeholder="Type data name"
+>
+</tui-input>
+
+<label for="dataDescription">Event Description</label>
+<tui-input
+    id="dataDescription"
+    tuiTextfieldSize="m"
+    [(ngModel)]="data.description"
+    placeholder="Type data description"
+>
+</tui-input>
+
+<label for="dataReward">Event Reward</label>
+<tui-input
+    id="dataReward"
+    tuiTextfieldSize="m"
+    [(ngModel)]="data.reward"
+    placeholder="Type data reward"
+>
+</tui-input>
+
+<button
+    size="m"
+    tuiButton
+    type="button"
+    [disabled]="!data.name || !data.description || !data.reward"
+    (click)="submit()"
+>
+    Submit
+</button>
