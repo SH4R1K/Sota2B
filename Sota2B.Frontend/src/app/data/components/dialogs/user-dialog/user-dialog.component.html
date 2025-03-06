@@ -1,1 +1,18 @@
-<p>user-dialog works!</p>
+<label for="userName">Имя пользователя</label>
+<tui-input
+    id="userName"
+    tuiAutoFocus
+    tuiTextfieldSize="m"
+    [(ngModel)]="data.name"
+    placeholder="Введите имя пользователя"
+>
+</tui-input>
+<button
+    size="m"
+    tuiButton
+    type="button"
+    [disabled]="!data.name"
+    (click)="submit()"
+>
+    Подтвердить
+</button>

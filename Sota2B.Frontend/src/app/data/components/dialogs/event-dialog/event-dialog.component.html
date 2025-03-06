@@ -1,37 +1,55 @@
-<label for="dataName">Event Name</label>
+<label for="dataName">Название</label>
 <tui-input
     id="dataName"
     tuiAutoFocus
     tuiTextfieldSize="m"
     [(ngModel)]="data.name"
-    placeholder="Type data name"
+    placeholder="Введите название события"
 >
 </tui-input>
 
-<label for="dataDescription">Event Description</label>
+<label for="dataDescription">Описание</label>
 <tui-input
     id="dataDescription"
     tuiTextfieldSize="m"
     [(ngModel)]="data.description"
-    placeholder="Type data description"
+    placeholder="Введите описание"
 >
 </tui-input>
 
-<label for="dataReward">Event Reward</label>
+<label for="dataReward">Награда</label>
 <tui-input
     id="dataReward"
     tuiTextfieldSize="m"
     [(ngModel)]="data.reward"
-    placeholder="Type data reward"
+    placeholder="Введите размер награды"
 >
 </tui-input>
+
+
+<p>
+    <tui-input-date
+        [min]="min"
+        [(ngModel)]="data.startDate"
+    >
+        Начало
+    </tui-input-date>
+</p>
+<p>
+    <tui-input-date
+        [min]="from || min"
+        [(ngModel)]="data.endDate"
+    >
+        Конец
+    </tui-input-date>
+</p>
 
 <button
     size="m"
     tuiButton
     type="button"
-    [disabled]="!data.name || !data.description || !data.reward"
+    [disabled]="!data.name || !data.description || !data.reward || !data.startDate || !data.endDate"
     (click)="submit()"
 >
-    Submit
+    Подтвердить
 </button>

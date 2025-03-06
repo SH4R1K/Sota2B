@@ -3,6 +3,6 @@ export interface IEvent {
     name: string;
     description: string;
     reward: number;
-    startDate: Date;
-    endDate: Date;
+    startDate?: Date;
+    endDate?: Date;
 }

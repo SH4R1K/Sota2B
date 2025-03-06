@@ -1,18 +1,19 @@
-import {AsyncPipe} from '@angular/common';
-import type {TemplateRef} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiAutoFocus} from '@taiga-ui/cdk';
-import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiButton, TuiDialogService, TuiTextfield} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiSlider} from '@taiga-ui/kit';
+import { AsyncPipe } from '@angular/common';
+import type { TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { TuiAmountPipe } from '@taiga-ui/addon-commerce';
+import { TuiAutoFocus, TuiDay } from '@taiga-ui/cdk';
+import type { TuiDialogContext } from '@taiga-ui/core';
+import { TuiButton, TuiDialogService, TuiTextfield } from '@taiga-ui/core';
+import { TuiDataListWrapper, TuiSlider } from '@taiga-ui/kit';
 import {
-    TuiInputModule,
-    TuiSelectModule,
-    TuiTextfieldControllerModule,
+  TuiInputModule,
+  TuiSelectModule,
+  TuiTextfieldControllerModule,
+  TuiInputDateModule
 } from '@taiga-ui/legacy';
-import {injectContext} from '@taiga-ui/polymorpheus';
+import { injectContext } from '@taiga-ui/polymorpheus';
 import { IEvent } from '../../../interfaces/event';
 
 @Component({
@@ -27,17 +28,22 @@ import { IEvent } from '../../../interfaces/event';
     TuiSlider,
     TuiTextfield,
     TuiTextfieldControllerModule,
+    TuiInputDateModule
   ],
   templateUrl: './event-dialog.component.html',
   styleUrl: './event-dialog.component.less'
 })
 export class EventDialogComponent {
   private readonly dialogs = inject(TuiDialogService);
-  
+
   public readonly context =
     injectContext<
       TuiDialogContext<IEvent, IEvent>
     >();
+
+  protected from: TuiDay | null = null;
+  protected to: TuiDay | null = null;
+  protected min = new TuiDay(2000, 1, 1);
 
   protected get hasValue(): boolean {
     return this.data.name.trim() !== '';

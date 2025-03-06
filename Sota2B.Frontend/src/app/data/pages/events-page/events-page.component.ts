@@ -22,13 +22,11 @@ export class EventsPageComponent {
     name: '',
     description: '',
     reward: 0,
-    startDate: new Date(),
-    endDate: new Date()
   };
 
   private readonly dialog = tuiDialog(EventDialogComponent, {
     dismissible: true,
-    label: 'Событие',
+    label: 'Создать событие',
   });
 
   events: IEvent[] = [];
@@ -60,11 +58,11 @@ export class EventsPageComponent {
     this.dialog({ ...this.event }).subscribe({
       next: (data) => {
         this.events.unshift(data)
-        // this.eventService.createEvent(data).subscribe({
-        //   next: (data) => {
-        //     console.log(1)
-        //   }
-        // })
+        this.eventService.createEvent(data).subscribe({
+          next: (data) => {
+            console.log(data)
+          }
+        })
       },
       complete: () => {
         console.info('Dialog closed');
