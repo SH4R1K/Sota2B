@@ -1,0 +1,20 @@
+<div class="event-details-container">
+    <h1>{{ event.name }}</h1>
+    <div class="event-info">
+        <p><strong>Описание:</strong> {{ event.description }}</p>
+        <p><strong>Награда:</strong> {{ event.reward }} points</p>
+        <p><strong>Начало:</strong> {{ event.startDate | date }}</p>
+        <p><strong>Конец:</strong> {{ event.endDate | date }}</p>
+    </div>
+    <button>Добавить пользователей</button>
+
+    <h2>Достижения</h2>
+    <div class="achievements-container">
+        
+        <app-achievement-card *ngIf="event.achievement" [achievementInfo]="event.achievement"></app-achievement-card> </div>
+
+    <h2>Участники</h2>
+    <div class="users-container">
+        <app-user-card *ngFor="let user of event.userWasOnEvent" [userInfo]="user"></app-user-card>
+    </div>
+</div>

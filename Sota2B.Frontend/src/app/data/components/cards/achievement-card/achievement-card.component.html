@@ -1,10 +1,11 @@
-<div
-    tuiCardLarge
-    tuiHeader
->
-    <h1 tuiTitle>
-        {{achievementInfo.name}}
-        <span tuiSubtitle>Описание: {{achievementInfo.description}}</span>
-        <span tuiSubtitle>Событие: {{achievementInfo.eventName}}</span>
-    </h1>
+<div class="card" tuiCardLarge tuiHeader>
+    <div class="user-info">
+        <img class="icon" src="https://avatars.mds.yandex.net/i?id=49bce3639d2a7f2317efb64c78e32f4a_l-9181306-images-thumbs&n=13"/>
+        <header tuiHeader>
+            <h2 tuiTitle>{{achievementInfo.name}}
+                <span tuiSubtitle>{{achievementInfo.description}}</span>
+                <span tuiSubtitle>Событие: {{achievementInfo.eventName}}</span>
+            </h2>
+        </header>
+    </div>
 </div>

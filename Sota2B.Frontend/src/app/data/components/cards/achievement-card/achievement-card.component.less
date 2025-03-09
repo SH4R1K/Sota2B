@@ -1,12 +1,25 @@
-div {
+.card {
     margin: 10px;
     flex: 1 0 30%; /* Устанавливаем базовую ширину карточек */
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Тень для карточек */
     border-radius: 5px; /* Закругленные углы для карточек */
     overflow: hidden; /* Скрываем переполнение */
     transition: transform 0.2s; /* Плавный переход при наведении */
+    width: 20em;
 }
 
-div:hover {
+.card:hover {
     transform: translateY(-5px); /* Подъем карточки при наведении */
+}
+.icon{
+    height: 5em;
+    border-radius: 100px;
+}
+.user-info {
+    display: flex; /* Используем Flexbox для выравнивания аватара и заголовка */
+    align-items: center; /* Вертикальное выравнивание по центру */
+}
+
+.user-info header {
+    margin-left: 15px; /* Отступ между аватаром и заголовком */
 }

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Sota2B.API.Converters;
+using Sota2B.API.Dto;
 using Sota2B.DAL.Data;
 using Sota2B.DM.Models;
 
@@ -15,10 +17,12 @@ namespace Sota2B.API.Controllers
     public class EventsController : ControllerBase
     {
         private readonly Sota2BContext _context;
+        private readonly IConverter<Event, EventDetailsDto> _eventConverterDto;
 
-        public EventsController(Sota2BContext context)
+        public EventsController(Sota2BContext context, IConverter<Event, EventDetailsDto> eventConverterDto)
         {
             _context = context;
+            _eventConverterDto = eventConverterDto;
         }
 
         // GET: api/Events
@@ -30,16 +34,16 @@ namespace Sota2B.API.Controllers
 
         // GET: api/Events/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Event>> GetEvent(int id)
+        public async Task<ActionResult<EventDetailsDto>> GetEvent(int id)
         {
-            var @event = await _context.Events.FindAsync(id);
+            var @event = await _context.Events.Include(e => e.UserWasOnEvent).ThenInclude(e => e.User).Include(e => e.Achievement).FirstOrDefaultAsync(e => e.Id == id);
 
             if (@event == null)
             {
                 return NotFound();
             }
 
-            return @event;
+            return _eventConverterDto.Convert(@event);
         }
 
         // PUT: api/Events/5

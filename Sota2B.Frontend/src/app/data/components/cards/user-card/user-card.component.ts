@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TuiPlatform } from '@taiga-ui/cdk';
-import { TuiAppearance, TuiButton, TuiLink, TuiTitle } from '@taiga-ui/core';
+import { TuiAppearance, TuiButton, TuiIcon, TuiLink, TuiTitle } from '@taiga-ui/core';
 import { TuiAvatar, TuiBadge } from '@taiga-ui/kit';
 import { TuiCardLarge, TuiHeader } from '@taiga-ui/layout';
 import { User } from '../../../interfaces/user';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: "app-user-card",
@@ -16,9 +17,11 @@ import { RouterModule } from '@angular/router';
     TuiCardLarge,
     TuiHeader,
     TuiTitle,
+    CommonModule,
+    TuiIcon
   ],
   templateUrl: './user-card.component.html',
-  styleUrl: './user-card.component.less'
+  styleUrl: './user-card.component.less',
 })
 export class UserCardComponent {
   @Input() userInfo!: User;

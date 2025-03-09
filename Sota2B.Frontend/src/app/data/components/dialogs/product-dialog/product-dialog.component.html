@@ -1,1 +1,37 @@
-<p>product-dialog works!</p>
+<label for="dataName">Название</label>
+<tui-input
+    id="dataName"
+    tuiAutoFocus
+    tuiTextfieldSize="m"
+    [(ngModel)]="data.name"
+    placeholder="Введите название продукта"
+>
+</tui-input>
+
+<label for="dataDescription">Описание</label>
+<tui-input
+    id="dataDescription"
+    tuiTextfieldSize="m"
+    [(ngModel)]="data.description"
+    placeholder="Введите описание"
+>
+</tui-input>
+
+<label for="dataReward">Стоимость</label>
+<tui-input
+    id="dataReward"
+    tuiTextfieldSize="m"
+    [(ngModel)]="data.price"
+    placeholder="Введите стоимость"
+>
+</tui-input>
+
+<button
+    size="m"
+    tuiButton
+    type="button"
+    [disabled]="!data.name || !data.description || !data.price"
+    (click)="submit()"
+>
+    Подтвердить
+</button>

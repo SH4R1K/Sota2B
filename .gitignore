@@ -9,7 +9,9 @@
 *.user
 *.userosscache
 *.sln.docstates
-*.db*
+*.db
+*.db-shm
+*.db-wal
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -361,3 +363,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+Sota2B.API/little.db
+Sota2B.API/little.db-shm
+Sota2B.API/little.db-wal

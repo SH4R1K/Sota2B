@@ -7,6 +7,7 @@ import { UsersPageComponent } from './data/pages/users-page/users-page.component
 import { UserDetailsPageComponent } from './data/pages/user-details-page/user-details-page.component';
 import { UsersRatingPageComponent } from './data/pages/users-rating-page/users-rating-page.component';
 import { ProductsPageComponent } from './data/pages/products-page/products-page.component';
+import { EventDetailsPageComponent } from './data/pages/event-details-page/event-details-page.component';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,11 @@ export const routes: Routes = [
       path: 'events',
       component: EventsPageComponent,
       title: 'Events page',
+    },
+    {
+      path: 'events/:idEvent',
+      component: EventDetailsPageComponent,
+      title: 'Event details page',
     },
     {
       path: 'purchases',

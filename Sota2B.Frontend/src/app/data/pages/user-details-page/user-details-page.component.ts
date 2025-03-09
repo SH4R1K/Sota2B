@@ -24,7 +24,6 @@ import { PurchaseCardComponent } from "../../components/cards/purchase-card/purc
   styleUrl: './user-details-page.component.less'
 })
 export class UserDetailsPageComponent {
-
     user!: UserDetails;
     idUser!: number;
     private sub: Subscription | null = null;

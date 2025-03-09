@@ -13,7 +13,8 @@ import { Achievement } from '../../../interfaces/achievement';
     TuiHeader,
     RouterModule,
     TuiSurface,
-    TuiTitle],
+    TuiTitle,
+  TuiAvatar],
   templateUrl: './achievement-card.component.html',
   styleUrl: './achievement-card.component.less'
 })
