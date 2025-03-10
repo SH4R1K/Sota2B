@@ -6,7 +6,7 @@
         <p><strong>Начало:</strong> {{ event.startDate | date }}</p>
         <p><strong>Конец:</strong> {{ event.endDate | date }}</p>
     </div>
-    <button>Добавить пользователей</button>
+    <button (click)="showDialog()">Добавить пользователей</button>
 
     <h2>Достижения</h2>
     <div class="achievements-container">

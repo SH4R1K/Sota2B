@@ -1,0 +1,29 @@
+<div class="tui-container_fullwidth">
+    <div class="tui-row tui-row_adaptive">
+        <label class="tui-col_md-12">
+            Пользователи
+            <tui-multi-select
+            [formControl]="selectedValue"
+            [stringify]="stringifyUser"
+            [rows]="3"
+            [tuiTextfieldCleaner]="true"
+            [tuiTextfieldLabelOutside]="true"
+        >
+            <tui-data-list-wrapper
+                *tuiDataList
+                tuiMultiSelectGroup
+                [items]="data"
+            />
+        </tui-multi-select>
+        
+        </label>
+    </div>
+    <button
+        size="m"
+        tuiButton
+        type="button"
+        (click)="submit()"
+    >
+        Подтвердить
+    </button>
+</div>

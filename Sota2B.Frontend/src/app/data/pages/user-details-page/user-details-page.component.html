@@ -1,7 +1,6 @@
-<h1>{{user.name}}</h1>
 <div class="container">
     <div class="section" id="achievementSection">
-        <h2>Достижения</h2>
+        <h2>Достижения {{user.name}}</h2>
         <div class="card-container">
             <div *ngFor="let achievement of user.achievements">
                 <app-achievement-card [achievementInfo]="achievement"></app-achievement-card>

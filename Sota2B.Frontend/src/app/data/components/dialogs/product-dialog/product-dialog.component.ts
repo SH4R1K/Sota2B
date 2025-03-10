@@ -42,10 +42,6 @@ export class ProductDialogComponent {
       TuiDialogContext<Product, Product>
     >();
 
-  protected from: TuiDay | null = null;
-  protected to: TuiDay | null = null;
-  protected min = new TuiDay(2000, 1, 1);
-
   protected get hasValue(): boolean {
     return this.data.name.trim() !== '';
   }

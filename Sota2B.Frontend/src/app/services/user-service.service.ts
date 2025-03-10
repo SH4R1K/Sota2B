@@ -28,6 +28,10 @@ export class UserService {
     return this.http.post<User>(`${this.baseUrl}/Users`, user);
   }
 
+  updateUser(id: number, user: User): Observable<User> {
+    return this.http.put<User>(`${this.baseUrl}/Users/${id}`, user);
+  }
+
   getUsersRating(): Observable<User[]> {
     return this.http
       .get<User[]>(`${this.baseUrl}/Users/Rating`);

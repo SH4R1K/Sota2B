@@ -1,9 +1,11 @@
 import { IEvent } from '../../../interfaces/event';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {TuiAppearance, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {TuiAppearance, tuiDialog, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import { RouterModule } from '@angular/router';
+import { EventService } from '../../../../services/event-service.service';
+import { EventDialogComponent } from '../../dialogs/event-dialog/event-dialog.component';
 @Component({
   selector: 'app-event-card',
   imports: [
@@ -18,4 +20,29 @@ import { RouterModule } from '@angular/router';
 })
 export class EventCardComponent {
   @Input() eventInfo!: IEvent;
+
+    constructor(private eventService: EventService) {
+  
+    }
+  
+    private readonly dialog = tuiDialog(EventDialogComponent, {
+      dismissible: true,
+      label: 'Редактировать событие',
+    });
+  
+    protected showDialog(event: MouseEvent): void {
+      event.stopPropagation();
+      this.dialog({ ...this.eventInfo }).subscribe({
+        next: (updEvent) => {
+          this.eventService.updateEvent(this.eventInfo.id, updEvent).subscribe({
+            next: (data) => {
+              this.eventInfo = updEvent;
+            }
+          })
+        },
+        complete: () => {
+          console.info('Dialog closed');
+        },
+      });
+    }
 }

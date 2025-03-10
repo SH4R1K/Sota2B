@@ -15,6 +15,9 @@ import { PurchaseCardComponent } from "../../components/cards/purchase-card/purc
 import { EventService } from '../../../services/event-service.service';
 import { IEvent } from '../../interfaces/event';
 import { EventDetails } from '../../interfaces/eventDetails';
+import { tuiDialog } from '@taiga-ui/core';
+import { EventDialogComponent } from '../../components/dialogs/event-dialog/event-dialog.component';
+import { AddUserToEventDialogComponent } from '../../components/dialogs/add-user-to-event-dialog/add-user-to-event-dialog.component';
 
 @Injectable({
   providedIn: 'root',
@@ -27,25 +30,56 @@ import { EventDetails } from '../../interfaces/eventDetails';
 })
 export class EventDetailsPageComponent {
   event!: EventDetails;
+  users: User[] = [];
   idEvent!: number;
-  private sub: Subscription | null = null;
-  constructor(private eventService: EventService,
-    private route: ActivatedRoute,){
-    
+
+  constructor(private eventService: EventService, private userService: UserService,
+    private route: ActivatedRoute,) {
+
   }
+
+  private readonly dialog = tuiDialog(AddUserToEventDialogComponent, {
+    dismissible: true,
+    label: 'Создать пользователя',
+  });
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-    this.idEvent = params['idEvent'];
+      this.idEvent = params['idEvent'];
     })
-    this.sub = this.eventService.getEvent(this.idEvent).subscribe({
+    this.loadEventData();
+    this.userService.getUsers().subscribe({
+      next: (value) => {
+        this.users = value;
+      }
+    })
+  }
+
+  private loadEventData() {
+    this.eventService.getEvent(this.idEvent).subscribe({
       next: (value) => {
         this.event = value;
       },
     });
   }
 
-  ngOnDestroy(): void {
-    this.sub?.unsubscribe();
+
+  protected showDialog(): void {
+    const dialogData = {
+      allUsers: this.users, 
+      selectedUsers: this.event.userWasOnEvent, 
+    };
+    this.dialog(dialogData).subscribe({
+      next: (data) => {
+        this.eventService.patchEvent(this.idEvent, data).subscribe({
+          next: (value) => {
+            this.loadEventData();
+          }
+        })
+      },
+      complete: () => {
+        console.info('Dialog closed');
+      },
+    });
   }
 }

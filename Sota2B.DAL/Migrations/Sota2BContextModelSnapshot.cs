@@ -39,7 +39,7 @@ namespace Sota2B.DAL.Migrations
                     b.HasIndex("IdEvent")
                         .IsUnique();
 
-                    b.ToTable("Achievements");
+                    b.ToTable("Achievements", (string)null);
                 });
 
             modelBuilder.Entity("Sota2B.DM.Models.Event", b =>
@@ -67,7 +67,7 @@ namespace Sota2B.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("Events", (string)null);
                 });
 
             modelBuilder.Entity("Sota2B.DM.Models.Product", b =>
@@ -89,7 +89,7 @@ namespace Sota2B.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Sota2B.DM.Models.Purchase", b =>
@@ -116,7 +116,7 @@ namespace Sota2B.DAL.Migrations
 
                     b.HasIndex("IdUser");
 
-                    b.ToTable("Purchases");
+                    b.ToTable("Purchases", (string)null);
                 });
 
             modelBuilder.Entity("Sota2B.DM.Models.User", b =>
@@ -131,7 +131,7 @@ namespace Sota2B.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Sota2B.DM.Models.UserHasAchievement", b =>
@@ -146,7 +146,7 @@ namespace Sota2B.DAL.Migrations
 
                     b.HasIndex("IdAchievment");
 
-                    b.ToTable("UserHasAchievements");
+                    b.ToTable("UserHasAchievements", (string)null);
                 });
 
             modelBuilder.Entity("Sota2B.DM.Models.UserWasOnEvent", b =>
@@ -164,7 +164,7 @@ namespace Sota2B.DAL.Migrations
 
                     b.HasIndex("IdEvent");
 
-                    b.ToTable("UserWasOnEvents");
+                    b.ToTable("UserWasOnEvents", (string)null);
                 });
 
             modelBuilder.Entity("Sota2B.DM.Models.Achievement", b =>

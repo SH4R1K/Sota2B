@@ -33,6 +33,11 @@ export class EventService {
     return this.http.put<IEvent>(`${this.baseUrl}/Events/${id}`, event);
   }
 
+  patchEvent(id: number, userIds: Number[]): Observable<IEvent> {
+    return this.http.patch<IEvent>(`${this.baseUrl}/Events/users/${id}`, userIds);
+  }
+
+
   // Удалить событие
   deleteEvent(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/Events/${id}`);

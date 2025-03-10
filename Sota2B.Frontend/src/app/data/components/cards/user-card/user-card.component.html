@@ -5,10 +5,7 @@
         <header tuiHeader>
             <h2 tuiTitle>{{userInfo.name}}</h2>
         </header>
-        <img
-        alt=""
-        [src]="'@tui.fa.solid.trash'"
-    />
     </div>
+    <button (click)="showDialog($event)">EDIT</button>
     <section *ngIf="userInfo.points">Баланс: {{userInfo.points}}</section>
 </div>

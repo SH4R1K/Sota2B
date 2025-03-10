@@ -33,6 +33,7 @@ import { IEvent } from '../../../interfaces/event';
   templateUrl: './event-dialog.component.html',
   styleUrl: './event-dialog.component.less'
 })
+
 export class EventDialogComponent {
   private readonly dialogs = inject(TuiDialogService);
 

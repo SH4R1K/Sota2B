@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sota2B.API.Converters;
 using Sota2B.API.Dto;
@@ -76,6 +71,65 @@ namespace Sota2B.API.Controllers
 
             return NoContent();
         }
+
+        [HttpPatch("users/{id}")]
+        public async Task<IActionResult> PatchEvent(int id, int[] userIds)
+        {
+            var eventEntity = await _context.Events
+                .Include(e => e.UserWasOnEvent)
+                .Include(e => e.Achievement)
+                    .ThenInclude(a => a.UserHasAchievment)
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+            if (eventEntity == null)
+            {
+                return NotFound();
+            }
+
+            var currentUserIds = eventEntity.UserWasOnEvent.Select(u => u.IdUser).ToList();
+
+            var usersToAdd = userIds.Except(currentUserIds)
+                .Select(userId => new UserWasOnEvent { IdEvent = id, IdUser = userId, Points = eventEntity.Reward })
+                .ToList();
+            
+            _context.UserWasOnEvents.AddRange(usersToAdd);
+
+            var usersToRemove = eventEntity.UserWasOnEvent
+                .Where(u => !userIds.Contains(u.IdUser))
+                .ToList();
+
+            _context.UserWasOnEvents.RemoveRange(usersToRemove);
+
+            if (eventEntity.Achievement != null)
+            {
+                var achievementId = eventEntity.Achievement.Id;
+
+                var achievementsToRemove = _context.UserHasAchievements
+                    .Where(ua => ua.IdAchievment == achievementId && usersToRemove.Select(u => u.IdUser).Contains(ua.IdUser))
+                    .ToList();
+
+                _context.UserHasAchievements.RemoveRange(achievementsToRemove);
+
+                var existingAchievers = _context.UserHasAchievements
+                    .Where(ua => ua.IdAchievment == achievementId && userIds.Contains(ua.IdUser))
+                    .Select(ua => ua.IdUser)
+                    .ToList();
+
+                var achievementsToAdd = usersToAdd
+                    .Where(u => !existingAchievers.Contains(u.IdUser))
+                    .Select(u => new UserHasAchievement { IdUser = u.IdUser, IdAchievment = achievementId })
+                    .ToList();
+
+                _context.UserHasAchievements.AddRange(achievementsToAdd);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
+
 
         // POST: api/Events
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

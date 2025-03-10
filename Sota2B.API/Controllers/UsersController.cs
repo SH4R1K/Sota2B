@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sota2B.API.Converters;
 using Sota2B.API.Dto;
@@ -94,8 +89,8 @@ namespace Sota2B.API.Controllers
         public async Task<ActionResult> RemoveUserEvent(int id, int eventId)
         {
             var user = await _context.Users
-                .Include(u => u.UserWasOnEvent) 
-                .Include(u => u.UserHasAchievments) 
+                .Include(u => u.UserWasOnEvent)
+                .Include(u => u.UserHasAchievments)
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             if (user == null)
@@ -104,14 +99,14 @@ namespace Sota2B.API.Controllers
             }
 
             var existEvent = await _context.Events
-                .Include(e => e.Achievement) 
+                .Include(e => e.Achievement)
                 .FirstOrDefaultAsync(e => e.Id == eventId);
 
             if (existEvent == null)
             {
                 return NotFound();
             }
-            
+
             if (existEvent.Achievement != null)
             {
                 var achievementToRemove = user.UserHasAchievments
