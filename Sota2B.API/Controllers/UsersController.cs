@@ -185,13 +185,15 @@ namespace Sota2B.API.Controllers
             {
                 return NotFound();
             }
-
+            //var userDto = _userConverterDto.Convert(user);
             var product = await _context.Products.FindAsync(productId);
 
             if (product == null)
             {
                 return NotFound();
             }
+            //if (product.Price > userDto.Points)
+            //    return BadRequest("Недостаточно средств");
             var purchase = new Purchase { IdUser = id, Product = product, Price = product.Price, PurchaseDate = DateTime.Now };
 
             await _context.Purchases.AddAsync(purchase);

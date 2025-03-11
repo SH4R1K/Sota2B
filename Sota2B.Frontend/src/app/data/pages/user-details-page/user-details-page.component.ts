@@ -90,6 +90,7 @@ export class UserDetailsPageComponent {
         this.userService.addUserProduct(this.idUser, product).subscribe({
           next: (value) => {
             this.user.purchases.push(value)
+            this.user.points -= value.price
           }
         })
       },
