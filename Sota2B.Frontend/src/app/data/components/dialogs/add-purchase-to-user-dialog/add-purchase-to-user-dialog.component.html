@@ -1,0 +1,7 @@
+<div class="tui-container_fullwidth">
+    <div class="tui-row tui-row_adaptive">
+        <div *ngFor="let product of products">
+            <app-product-card (click)="submit(product)" [productInfo]="product"></app-product-card>
+        </div>
+    </div>
+</div>

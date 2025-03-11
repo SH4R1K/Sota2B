@@ -17,8 +17,6 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-users-rating-page',
   imports: [
     CommonModule,
-    UserCardComponent
-
 ],
   templateUrl: './users-rating-page.component.html',
   styleUrl: './users-rating-page.component.less'

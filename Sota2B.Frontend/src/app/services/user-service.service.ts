@@ -55,4 +55,8 @@ export class UserService {
     return this.http
       .get<Achievement[]>(`${this.baseUrl}/Users/achievements/${idUser}`);
   }
+  addUserProduct(idUser: number, idProduct: number): Observable<Purchase> {
+    return this.http
+      .post<Purchase>(`${this.baseUrl}/Users/purchases/${idUser}/${idProduct}`, null);
+  }
 }

@@ -1,4 +1,13 @@
 <div class="container">
+    <div class="section">
+        <h1>{{user.name}}</h1>
+        <h1>Баланс: {{user.points}}</h1>
+    </div>
+    <div class="section" id="buttonsSection">
+        <h2>Управление</h2>
+        <button tuiButton (click)="showEditDialog($event)">Редактировать информацию</button>
+        <button tuiButton (click)="showPurchaseDialog($event)">Совершить покупку</button>
+    </div>
     <div class="section" id="achievementSection">
         <h2>Достижения {{user.name}}</h2>
         <div class="card-container">
@@ -24,8 +33,8 @@
                     <tbody>
                         <tr *ngFor="let event of user.events">
                             <td>{{ event.name }}</td>
-                            <td>{{ event.startDate| date }}</td>
-                            <td>{{ event.endDate| date }}</td>
+                            <td>{{ event.startDate| date:'shortDate':'+3':'ru' }}</td>
+                            <td>{{ event.endDate| date:'shortDate':'+3':'ru' }}</td>
                             <td>{{ event.description }}</td>
                             <td>{{ event.reward }}</td>
                         </tr>
@@ -49,7 +58,7 @@
                     <tr *ngFor="let purchase of user.purchases">
                         <td>{{ purchase.productName }}</td>
                         <td>{{ purchase.price}}</td>
-                        <td>{{ purchase.purchaseDate| date }}</td>
+                        <td>{{ purchase.purchaseDate| date:'short':'+3':'ru' }}</td>
                     </tr>
                 </tbody>
             </table>

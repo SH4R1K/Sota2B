@@ -1,5 +1,5 @@
 import { Component, inject, TemplateRef } from '@angular/core';
-import { TuiDialogContext, TuiDialogService } from '@taiga-ui/core';
+import { TuiButton, TuiDialogContext, TuiDialogService } from '@taiga-ui/core';
 import { injectContext } from '@taiga-ui/polymorpheus';
 import { AsyncPipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +21,8 @@ import { User } from '../../../interfaces/user';
     TuiDataListWrapper,
     TuiLet,
     TuiMultiSelectModule,
-    TuiTextfieldControllerModule
+    TuiTextfieldControllerModule,
+    TuiButton
   ],
   templateUrl: './add-user-to-event-dialog.component.html',
   styleUrl: './add-user-to-event-dialog.component.less',

@@ -192,11 +192,11 @@ namespace Sota2B.API.Controllers
             {
                 return NotFound();
             }
-            var purchase = new Purchase { IdUser = id, IdProduct = productId, Price = product.Price, PurchaseDate = DateTime.Now };
+            var purchase = new Purchase { IdUser = id, Product = product, Price = product.Price, PurchaseDate = DateTime.Now };
 
             await _context.Purchases.AddAsync(purchase);
             await _context.SaveChangesAsync();
-            return CreatedAtAction("AddUserPurchase", purchase);
+            return CreatedAtAction("AddUserPurchase", _purchaseConverterDto.Convert(purchase));
         }
 
         [HttpGet("{id}")]

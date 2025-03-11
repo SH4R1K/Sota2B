@@ -3,8 +3,8 @@
     <div class="event-info">
         <p><strong>Описание:</strong> {{ event.description }}</p>
         <p><strong>Награда:</strong> {{ event.reward }} points</p>
-        <p><strong>Начало:</strong> {{ event.startDate | date }}</p>
-        <p><strong>Конец:</strong> {{ event.endDate | date }}</p>
+        <p><strong>Начало:</strong> {{ event.startDate | date:'fullDate':'+3':'ru' }}</p>
+        <p><strong>Конец:</strong> {{ event.endDate | date:'fullDate':'+3':'ru' }}</p>
     </div>
     <button (click)="showDialog()">Добавить пользователей</button>
 

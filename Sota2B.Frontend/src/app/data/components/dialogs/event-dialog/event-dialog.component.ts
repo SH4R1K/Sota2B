@@ -3,7 +3,7 @@ import type { TemplateRef } from '@angular/core';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TuiAmountPipe } from '@taiga-ui/addon-commerce';
-import { TuiAutoFocus, TuiDay } from '@taiga-ui/cdk';
+import { TuiAutoFocus, TuiDay, TuiTime } from '@taiga-ui/cdk';
 import type { TuiDialogContext } from '@taiga-ui/core';
 import { TuiButton, TuiDialogService, TuiTextfield } from '@taiga-ui/core';
 import { TuiDataListWrapper, TuiSlider } from '@taiga-ui/kit';
@@ -15,7 +15,7 @@ import {
 } from '@taiga-ui/legacy';
 import { injectContext } from '@taiga-ui/polymorpheus';
 import { IEvent } from '../../../interfaces/event';
-
+import { ENativeDateTransformer } from '../../../transformers/native-date-transofrmer.directive';
 @Component({
   selector: 'app-event-dialog',
   imports: [
@@ -28,7 +28,8 @@ import { IEvent } from '../../../interfaces/event';
     TuiSlider,
     TuiTextfield,
     TuiTextfieldControllerModule,
-    TuiInputDateModule
+    TuiInputDateModule,
+    ENativeDateTransformer
   ],
   templateUrl: './event-dialog.component.html',
   styleUrl: './event-dialog.component.less'

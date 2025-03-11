@@ -29,6 +29,8 @@
 
 <p>
     <tui-input-date
+        toNativeDate
+        [tuiTextfieldCleaner]="true"
         [min]="min"
         [(ngModel)]="data.startDate"
     >
@@ -37,6 +39,8 @@
 </p>
 <p>
     <tui-input-date
+        toNativeDate
+        [tuiTextfieldCleaner]="true"
         [min]="from || min"
         [(ngModel)]="data.endDate"
     >
