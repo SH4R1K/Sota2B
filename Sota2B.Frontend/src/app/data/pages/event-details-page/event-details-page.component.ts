@@ -40,7 +40,7 @@ export class EventDetailsPageComponent {
 
   private readonly dialog = tuiDialog(AddUserToEventDialogComponent, {
     dismissible: true,
-    label: 'Создать пользователя',
+    label: 'Управлять участниками',
   });
 
   ngOnInit(): void {
