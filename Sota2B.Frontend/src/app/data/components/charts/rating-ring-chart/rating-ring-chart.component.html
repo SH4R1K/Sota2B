@@ -1,0 +1,9 @@
+<tui-ring-chart
+    size="xl"
+    [value]="value"
+    [(activeItemIndex)]="index"
+>
+    <span>{{ sum | tuiAmount: '👍' | async }}</span>
+    <div>{{ percent }}%</div>
+    <div>{{ label }}</div>
+</tui-ring-chart>

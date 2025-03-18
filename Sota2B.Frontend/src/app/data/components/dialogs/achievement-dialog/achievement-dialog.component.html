@@ -1,0 +1,27 @@
+<tui-input
+    id="name"
+    tuiAutoFocus
+    tuiTextfieldSize="m"
+    [(ngModel)]="data.name"
+    placeholder="Введите название достижения"
+>
+Название достижения
+</tui-input>
+<tui-input
+id="description"
+tuiAutoFocus
+tuiTextfieldSize="m"
+[(ngModel)]="data.description"
+placeholder="Введите описание"
+>
+Описание
+</tui-input>
+<button
+    size="m"
+    tuiButton
+    type="button"
+    [disabled]="!data.name || !data.description"
+    (click)="submit()"
+>
+    Подтвердить
+</button>

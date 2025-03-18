@@ -2,7 +2,7 @@
 
 namespace Sota2B.API.Services
 {
-    public class EventService : IService<Event>
+    public class EventService
     {
         public void Delete(int id)
         {

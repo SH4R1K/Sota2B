@@ -44,6 +44,14 @@
         Конец
     </tui-input-date>
 </p>
+<button
+    size="m"
+    tuiButton
+    type="button"
+    (click)="openAchievementDialog()"
+>
+    {{!data.achievement ? "Добавить достижение" : "Редактировать достижение"}}
+</button>
 
 <button
     size="m"

@@ -14,3 +14,7 @@
         </tr>
     </tbody>
 </table>
+
+<div *ngIf="users && users.length > 0">
+    <app-rating-ring-chart [users]="users"></app-rating-ring-chart>
+  </div>

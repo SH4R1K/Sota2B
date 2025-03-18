@@ -2,7 +2,7 @@
 
 namespace Sota2B.API.Services
 {
-    public class ProductService : IService<Product>
+    public class ProductService
     {
         public void Delete(int id)
         {

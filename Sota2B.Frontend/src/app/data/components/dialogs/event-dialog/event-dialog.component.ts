@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TuiAmountPipe } from '@taiga-ui/addon-commerce';
 import { TuiAutoFocus, TuiDay, TuiTime } from '@taiga-ui/cdk';
 import type { TuiDialogContext } from '@taiga-ui/core';
-import { TuiButton, TuiDialogService, TuiTextfield } from '@taiga-ui/core';
+import { TuiButton, tuiDialog, TuiDialogService, TuiTextfield } from '@taiga-ui/core';
 import { TuiDataListWrapper, TuiSlider } from '@taiga-ui/kit';
 import {
   TuiInputModule,
@@ -16,6 +16,9 @@ import {
 import { injectContext } from '@taiga-ui/polymorpheus';
 import { IEvent } from '../../../interfaces/event';
 import { ENativeDateTransformer } from '../../../transformers/native-date-transofrmer.directive';
+import { AchievementDialogComponent } from '../achievement-dialog/achievement-dialog.component';
+import { Achievement } from '../../../interfaces/achievement';
+import { PostAchievement } from '../../../interfaces/postAchievement';
 @Component({
   selector: 'app-event-dialog',
   imports: [
@@ -42,6 +45,14 @@ export class EventDialogComponent {
     injectContext<
       TuiDialogContext<IEvent, IEvent>
     >();
+  achievement: PostAchievement = {
+    name: this.context.data.achievement?.name || '',
+    description: this.context.data.achievement?.description || ''
+  }
+  private readonly dialog = tuiDialog(AchievementDialogComponent, {
+    dismissible: true,
+    label: 'Достижение',
+  });
 
   protected from: TuiDay | null = null;
   protected to: TuiDay | null = null;
@@ -63,6 +74,15 @@ export class EventDialogComponent {
       this.context.completeWith(this.data);
     }
   }
+  protected openAchievementDialog(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
+    this.dialog(this.achievement).subscribe({next: (value) => {
+        this.context.data.achievement = value;
+    }})
+  }
+
 
   protected showDialog(content: TemplateRef<TuiDialogContext>): void {
     this.dialogs.open(content, { dismissible: true }).subscribe();

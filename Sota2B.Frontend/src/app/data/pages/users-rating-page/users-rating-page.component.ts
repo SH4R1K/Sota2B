@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { UserCardComponent } from '../../components/cards/user-card/user-card.component';
 import { ActivatedRoute } from '@angular/router';
+import { RatingRingChartComponent } from "../../components/charts/rating-ring-chart/rating-ring-chart.component";
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-users-rating-page',
   imports: [
     CommonModule,
+    RatingRingChartComponent
 ],
   templateUrl: './users-rating-page.component.html',
   styleUrl: './users-rating-page.component.less'

@@ -15,7 +15,7 @@ namespace Sota2B.DM.Models
         public int Reward { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        [JsonIgnore]
+        //[JsonIgnore]
         public Achievement? Achievement { get; set; }
         [JsonIgnore]
         public List<UserWasOnEvent> UserWasOnEvent { get; set; } = new List<UserWasOnEvent>();

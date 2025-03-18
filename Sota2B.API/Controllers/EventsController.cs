@@ -24,7 +24,7 @@ namespace Sota2B.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
         {
-            return await _context.Events.ToListAsync();
+            return await _context.Events.Include(e => e.Achievement).ToListAsync();
         }
 
         // GET: api/Events/5
@@ -51,8 +51,35 @@ namespace Sota2B.API.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(@event).State = EntityState.Modified;
+            // Загрузка существующего события из базы данных
+            var existingEvent = await _context.Events
+                .Include(e => e.Achievement) // Включаем Achievement
+                .FirstOrDefaultAsync(e => e.Id == id);
 
+            if (existingEvent == null)
+            {
+                return NotFound();
+            }
+
+            // Обновление свойств события
+            existingEvent.Name = @event.Name;
+            existingEvent.Description = @event.Description;
+            existingEvent.Reward = @event.Reward;
+            existingEvent.StartDate = @event.StartDate;
+            existingEvent.EndDate = @event.EndDate;
+
+            // Обновление Achievement, если он не равен null
+            if (@event.Achievement != null)
+            {
+                if (existingEvent.Achievement == null)
+                {
+                    existingEvent.Achievement = new Achievement(); // Создаем новый Achievement, если его нет
+                }
+
+                // Обновляем свойства Achievement
+                existingEvent.Achievement.Name = @event.Achievement.Name; // Замените Property1 на реальные свойства
+                existingEvent.Achievement.Description = @event.Achievement.Description; // Замените Property2 на реальные свойства
+            }
             try
             {
                 await _context.SaveChangesAsync();
