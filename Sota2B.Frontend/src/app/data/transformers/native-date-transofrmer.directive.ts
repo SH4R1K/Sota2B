@@ -21,7 +21,7 @@ class NativeDateTransformer extends TuiValueTransformer<From, To> {
     }
 
     public toControlValue(componentValue: From): To {
-        return componentValue?.toLocalNativeDate() || null;
+        return componentValue?.toUtcNativeDate() || null;
     }
 }
 

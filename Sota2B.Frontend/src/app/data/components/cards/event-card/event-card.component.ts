@@ -34,6 +34,7 @@ export class EventCardComponent {
       event.stopPropagation();
       this.dialog({ ...this.eventInfo }).subscribe({
         next: (updEvent) => {
+          console.log(updEvent.startDate)
           this.eventService.updateEvent(this.eventInfo.id, updEvent).subscribe({
             next: (data) => {
               this.eventInfo = updEvent;

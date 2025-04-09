@@ -61,6 +61,8 @@ namespace Sota2B.API.Controllers
                 return NotFound();
             }
 
+            if (@event.StartDate > @event.EndDate)
+                return BadRequest("Дата начала не может быть позже даты окончания");
             // Обновление свойств события
             existingEvent.Name = @event.Name;
             existingEvent.Description = @event.Description;
@@ -163,6 +165,9 @@ namespace Sota2B.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Event>> PostEvent(Event @event)
         {
+            if (@event.StartDate > @event.EndDate)
+                return BadRequest("Дата начала не может быть позже даты окончания");
+
             _context.Events.Add(@event);
             await _context.SaveChangesAsync();
 

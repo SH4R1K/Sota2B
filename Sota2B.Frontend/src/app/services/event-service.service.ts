@@ -30,6 +30,7 @@ export class EventService {
 
   // Обновить существующее событие
   updateEvent(id: number, event: IEvent): Observable<IEvent> {
+    console.log(event)
     return this.http.put<IEvent>(`${this.baseUrl}/Events/${id}`, event);
   }
 

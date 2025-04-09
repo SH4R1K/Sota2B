@@ -57,9 +57,9 @@ export class EventsPageComponent {
   protected showDialog(): void {
     this.dialog({ ...this.event }).subscribe({
       next: (data) => {
-        this.events.unshift(data)
         this.eventService.createEvent(data).subscribe({
           next: (data) => {
+            this.events.unshift(data)
             console.log(data)
           }
         })
