@@ -1,12 +1,12 @@
 services:
   api:
-    container_name: apieasier_api
-    hostname: apieasier_api
+    container_name: sota2b_api
+    hostname: sota2b_api
     restart: always
-    image: apieasier_api
+    image: sota2b_api
     build:
-      context: ./src 
-      dockerfile: ApiEasier.Api/Dockerfile
+      context: ./ 
+      dockerfile: Sota2b.API/Dockerfile
     env_file:
       - path: ./environment/default.env
         required: true
@@ -14,14 +14,14 @@ services:
       - backend
       - frontend 
   frontend:
-    container_name: apieasier_frontend
-    hostname: apieasier_frontend
+    container_name: sota2b_frontend
+    hostname: sota2b_frontend
     restart: always
     ports:
       - "5280:80"
-    image: apieasier_frontend
+    image: sota2b_frontend
     build:
-      context: ./ApiEasier.Frontend/
+      context: ./Sota2b.Frontend/
       dockerfile: Dockerfile
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
