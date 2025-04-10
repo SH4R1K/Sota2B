@@ -79,8 +79,8 @@ namespace Sota2B.API.Controllers
                 }
 
                 // Обновляем свойства Achievement
-                existingEvent.Achievement.Name = @event.Achievement.Name; // Замените Property1 на реальные свойства
-                existingEvent.Achievement.Description = @event.Achievement.Description; // Замените Property2 на реальные свойства
+                existingEvent.Achievement.Name = @event.Achievement.Name; 
+                existingEvent.Achievement.Description = @event.Achievement.Description; 
             }
             try
             {
