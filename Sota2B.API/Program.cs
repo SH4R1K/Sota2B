@@ -16,7 +16,7 @@ builder.Services.AddScoped<IConverter<Achievement, AchievementDto>, AchievementT
 // Add services to the container.
 builder.Services.AddDbContext<Sota2BContext>(options =>
 {
-    options.UseSqlite("Data Source=little.db");
+    options.UseSqlite("Data Source=./Data/little.db");
 });
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -36,6 +36,9 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+if (!Directory.Exists("./Data"))
+    Directory.CreateDirectory("./Data");
 
 using (var scope = app.Services.CreateScope())
 {

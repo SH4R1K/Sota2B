@@ -4,6 +4,8 @@ services:
     hostname: sota2b_api
     restart: always
     image: sota2b_api
+    volumes:
+      - ./data:/app/Data
     build:
       context: ./ 
       dockerfile: Sota2B.API/Dockerfile
