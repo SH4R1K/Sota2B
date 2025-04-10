@@ -1,9 +1,9 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /source
 
-COPY ../Sota2B.Api/Sota2B.API.csproj Sota2B.API/
-COPY ../Sota2B.Dal/Sota2B.DAL.csproj Sota2B.DAL/
-COPY ../Sota2B.Dm/Sota2B.DM.csproj Sota2B.DM/
+COPY ../Sota2B.API/Sota2B.API.csproj Sota2B.API/
+COPY ../Sota2B.DAL/Sota2B.DAL.csproj Sota2B.DAL/
+COPY ../Sota2B.DM/Sota2B.DM.csproj Sota2B.DM/
 
 # Восстанавливаем зависимости
 WORKDIR /source/Sota2B.API
