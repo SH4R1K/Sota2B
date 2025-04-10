@@ -6,7 +6,7 @@ services:
     image: sota2b_api
     build:
       context: ./ 
-      dockerfile: Sota2b.API/Dockerfile
+      dockerfile: Sota2B.API/Dockerfile
     networks:
       - backend
       - frontend 
@@ -18,7 +18,7 @@ services:
       - "5280:80"
     image: sota2b_frontend
     build:
-      context: ./Sota2b.Frontend/
+      context: ./Sota2B.Frontend/
       dockerfile: Dockerfile
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
