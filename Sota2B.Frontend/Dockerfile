@@ -6,7 +6,7 @@ COPY . .
 RUN npm run build --prod
 
 FROM nginx:stable-perl
-COPY --from=build /front/dist/Sota2B/browser /usr/share/nginx/html
+COPY --from=build /front/dist/sota2-b/browser /usr/share/nginx/html
 
 EXPOSE 80
 CMD [ "nginx", "-g", "daemon off;" ]
