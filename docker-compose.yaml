@@ -7,9 +7,6 @@ services:
     build:
       context: ./ 
       dockerfile: Sota2b.API/Dockerfile
-    env_file:
-      - path: ./environment/default.env
-        required: true
     networks:
       - backend
       - frontend 
